@@ -11,7 +11,7 @@ function listener() {
     console.debug("listener fired.");
     jQuery(function($) {
       // Timezone for tool.
-      var timezone = 'Asia/Beijing';
+      var timezone = 'Asia/Hong_Kong';
 
       // Date object -> '19920517'
       function getDateString(date) {
