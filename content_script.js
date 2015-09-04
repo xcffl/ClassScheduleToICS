@@ -7,6 +7,9 @@
 **/
 var test;
 var previouscomponent;
+var previousClassNumber;
+var previousSection;
+
 function listener() {
     console.debug("listener fired.");
     jQuery(function($) {
@@ -101,6 +104,24 @@ function listener() {
                 console.debug('Now previouscomponent set to ' + previouscomponent);
               }
               console.debug('Now component is ' + component + '.');
+              console.debug(classNumber + 'has a length of ' + classNumber.length);
+              if (classNumber.length == 1) {
+                console.debug('Yes classNumber is empty.')
+                classNumber = previousClassNumber;
+              }
+              else {
+                previousClassNumber = classNumber;
+                console.debug('Now previousClassNumber set to ' + previousClassNumber);
+              }
+              console.debug(section + 'has a length of ' + section.length);
+              if (section.length == 0 ) {
+                console.debug('Yes section' + section + ' is empty.')
+                section = previousSection;
+              }
+              else {
+                previousSection = section;
+                console.debug('Now previousSection set to ' + previousSection);
+              }
               var room          = $(this).find('span[id*="MTG_LOC"]').text();
               var instructor    = $(this).find('span[id*="DERIVED_CLS_DTL_SSR_INSTR_LONG"]').text();
               var startEndDate  = $(this).find('span[id*="MTG_DATES"]').text();
