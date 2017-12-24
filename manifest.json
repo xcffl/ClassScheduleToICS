@@ -1,14 +1,15 @@
 {
   "manifest_version":   2,
   "name":               "CUHK(SZ) & CUHK Class Schedule Exporter",
-  "version":            "1.1",
+  "version":            "1.1.1",
   "description":        "Export your CUHK(SZ) or CUHK class schedule to your calendar",
-  "icons": { "128": "icon.png" },
+  "icons": {
+    "128": "icon.png" },
   "content_scripts":    [
     {
-      "matches":          ["http://116.31.95.3/*", "http://116.31.95.2/*", "http://58.250.174.66/*", "https://portal.cuhk.edu.hk/*"],
+      "matches":          ["http://116.31.95.3/*", "http://116.31.95.2/*", "http://58.250.174.66/*", "https://portal.cuhk.edu.hk/*", "http://course.computercomity.com:81/*"],
       "all_frames":       true,
-      "js":               ["jquery-1.9.1.min.js", "content_script.js"]
+      "js":               ["jquery-3.2.1.min.js", "content_script.js"]
     }
   ]
 }
