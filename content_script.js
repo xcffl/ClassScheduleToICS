@@ -56,6 +56,14 @@ function listener() {
         if (s.match(/Th/))    days.push('TH');
         if (s.match(/F/))     days.push('FR');
         if (s.match(/S[^u]/)) days.push('SA');
+        // Chinese
+        if (s.match(/日/)) days.push('SU');
+        if (s.match(/一/))     days.push('MO');
+        if (s.match(/二/)) days.push('TU');
+        if (s.match(/三/))     days.push('WE');
+        if (s.match(/四/))    days.push('TH');
+        if (s.match(/五/))     days.push('FR');
+        if (s.match(/六/)) days.push('SA');
 
         return days.join(',')
       }
@@ -89,7 +97,7 @@ function listener() {
             var startEndTimes = daysTimes.match(/\d\d?:\d\d/g);
             console.debug('startEndTimes' + startEndTimes);
             if (startEndTimes) {
-              var daysOfWeek  = getDaysOfWeek(daysTimes.match(/[A-Za-z]* /)[0]);
+              var daysOfWeek  = getDaysOfWeek(daysTimes.match(/[A-Za-z]*[^\x00-\xff]* /)[0]);
               var startTime   = startEndTimes[0];
               var endTime     = startEndTimes[1];
               var section       = $(this).find('a[id*="MTG_SECTION"]').text();
