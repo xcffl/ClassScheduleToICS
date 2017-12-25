@@ -151,6 +151,13 @@ function listener() {
               var endDateString = startEndDate.substring(13, 24);
               endDateString = endDateString.replace(/\//g,"");
               console.debug('Composing iCalContent');
+              // For the difficulty of determining the real start date of each day, we use a unified start
+              // date, yet set the first day into the exceptions of the classes that take in other days.
+              if (daysOfWeek != "MO") {
+                var exdate = 'EXDATE;TZID=' + timezone + ':' + startDateString + 'T' + getTimeString(startTime) + '\n'
+              } else {
+                var exdate = ""
+              }
               var iCalContent =
                 'BEGIN:VEVENT\n' +
                 //'DTSTART;TZID=' + timezone + ':' + getDateTimeString(startDate, startTime) + '\n' +
@@ -161,7 +168,8 @@ function listener() {
                 //'RRULE:FREQ=WEEKLY;UNTIL=' + getDateTimeString(endDate, endTime) + 'Z;BYDAY=' + daysOfWeek + '\n' +
                 'RRULE:FREQ=WEEKLY;UNTIL=' + endDateString + 'T' + getTimeString(endTime) + 'Z;BYDAY=' + daysOfWeek + '\n' +
                 //'EXDATE;TZID=' + timezone + ':' + getDateTimeString(startDate, startTime) + '\n' +
-                'EXDATE;TZID=' + timezone + ':' + startDateString + 'T' + getTimeString(startTime) + '\n' +
+                // Set expections
+                exdate +
                 'SUMMARY:'  + courseCode + '(' + component + ')\n' +
                 'DESCRIPTION:' +
                   'Course Name: '    + courseName + '\\n' +
