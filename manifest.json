@@ -1,7 +1,7 @@
 {
   "manifest_version":   2,
   "name":               "CUHK(SZ) & CUHK Class Schedule Exporter",
-  "version":            "1.1.1",
+  "version":            "1.1.2",
   "description":        "Export your CUHK(SZ) or CUHK class schedule to your calendar",
   "icons": {
     "128": "icon.png" },
