@@ -68,11 +68,11 @@ function getDaysOfWeek(s) {
 
 // VEVENT -> BEGIN:VCALENDAR...VEVENT...END:VCALENDAR
 function wrapICalContent(iCalContent) {
-    return 'BEGIN:VCALENDAR\n' +
-        'VERSION:2.0\n' +
-        'PRODID:-//Alan Chen/Class Schedule to ICS//EN\n' +
+    return 'BEGIN:VCALENDAR\r\n' +
+        'VERSION:2.0\r\n' +
+        'PRODID:-//Alan Chen/Class Schedule to ICS//EN\r\n' +
         iCalContent +
-        'END:VCALENDAR\n';
+        'END:VCALENDAR\r\n';
 }
 
 function fillempty(data) {
@@ -106,11 +106,11 @@ function fillempty(data) {
 
 function listener() {
     console.debug("listener fired.");
-    jQuery(function($) {
+    jQuery(function ($) {
         var iCalContentArray = [];
         var data = [];
 
-        $('.PSGROUPBOXWBO').each(function() {
+        $('.PSGROUPBOXWBO').each(function () {
             var eventTitle = $(this).find('.PAGROUPDIVIDER').text().split('-');
             data['courseCode'] = eventTitle[0];
             data['courseName'] = eventTitle[1];
@@ -120,7 +120,7 @@ function listener() {
             console.debug(data['courseCode']);
             console.debug(componentRows);
 
-            componentRows.each(function() {
+            componentRows.each(function () {
 
                 // Collect Data
                 data['classNumber'] = $(this).find(selectors['classNumber']).text();
@@ -181,8 +181,8 @@ function listener() {
             // where we do not need to encode data to URI
             iCalContent = wrapICalContent(iCalContentArray.join(''));
             iCalBlob = new Blob(
-              [iCalContent],
-              {type: 'data:text/calendar;charset=utf8'}
+                [iCalContent],
+                { type: 'data:text/calendar;charset=utf8' }
             );
 
             browser.runtime.sendMessage({
@@ -199,7 +199,7 @@ function listener() {
 
 
 var timeout = null;
-document.addEventListener("DOMSubtreeModified", function() {
+document.addEventListener("DOMSubtreeModified", function () {
     if (timeout) {
         clearTimeout(timeout);
     }
