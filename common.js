@@ -1,7 +1,7 @@
 /**
  * Class Schedule to ICS File Exporter
  * (c) 2015 Alan
- * With contributions from: Baraa Hamodi, Keanu Lee
+ * With contributions from: Baraa Hamodi, Keanu Lee, xcffl
  *
  * Ported to CUHK by: Max Sum <maxsumprc@gmail.com>
  *
